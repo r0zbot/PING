@@ -1,0 +1,14 @@
+# Features do PING
+ - Clássico Jogo Pong
+ - Efeito especial quando a bola acerta o meio da barra
+ - Trilha sonora (Dubstep?/Electroswing?)
+ - Menu com 
+ -  - Singleplayer
+    - Multiplayer
+    - Ícones para som e Fullscreen
+    - Sair
+- Bola pulsa com a música
+- Bola explode quando faz ponto
+- Roleta para escolher a direção inicial da bola
+- Rastro por onde a bola passou
+- Estilo TRON
