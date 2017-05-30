@@ -1,2 +1,2 @@
 # PING
-PONG
+Basicamente, um pong mas muito mas legal e cheio de ação e aventura, onde você, Mister White Bar, uma barra branca com o incrível poder de se mover verticalmente a vontade, luta contra seu irmão gêmeo do mal em um duelo simulado de tênis de mesa para decidir quem continuara vivo.
