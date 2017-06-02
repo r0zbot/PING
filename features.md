@@ -1,7 +1,7 @@
 # Features do PING
  - Clássico Jogo Pong
  - Efeito especial quando a bola acerta o meio da barra
- - [https://youtu.be/m4cgLL8JaVI](Trilha sonora)
+ - [Trilha sonora](https://youtu.be/m4cgLL8JaVI)
  - Menu com 
     - Singleplayer
     - Multiplayer
