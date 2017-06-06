@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://ball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://barraAzul.tscn" type="PackedScene" id=2]
+[ext_resource path="res://barraVermelha.tscn" type="PackedScene" id=3]
+
+[node name="YSort" type="YSort"]
+
+sort/enabled = true
+
+[node name="Ball" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 586.547, 327.669 )
+transform/scale = Vector2( 0.487846, 0.487846 )
+
+[node name="BarraAzul" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 43.4247, 455.96 )
+transform/scale = Vector2( 0.513943, 0.513943 )
+
+[node name="BarraVermelha" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 976.535, 151.464 )
+transform/scale = Vector2( 0.513943, 0.513943 )
+
+
