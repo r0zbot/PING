@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://ball.tscn" type="PackedScene" id=1]
 [ext_resource path="res://barraAzul.tscn" type="PackedScene" id=2]
 [ext_resource path="res://barraVermelha.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Daft Punk - Derezzed.ogg" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 63.8428, 10 )
 
 [node name="YSort" type="YSort"]
 
@@ -22,5 +28,46 @@ transform/scale = Vector2( 0.513943, 0.513943 )
 
 transform/pos = Vector2( 976.535, 151.464 )
 transform/scale = Vector2( 0.513943, 0.513943 )
+
+[node name="Borders" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 8.01671, 0, 0, 10, 513.905, -98.1294 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 1 )
+shapes/1/transform = Matrix32( 8.01671, 0, 0, 10, 512.398, 698.874 )
+shapes/1/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders"]
+
+transform/pos = Vector2( 513.905, -98.1294 )
+transform/scale = Vector2( 8.01671, 10 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Borders"]
+
+transform/pos = Vector2( 512.398, 698.874 )
+transform/scale = Vector2( 8.01671, 10 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 1
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 4 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 
