@@ -6,13 +6,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 599.397, 10 )
 
 [node name="BarraVermelha" type="KinematicBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 3.00736, 0, 0, 15.8253, -0.485777, -1.08532 )
+shapes/0/transform = Matrix32( 0.0176144, 0, 0, 15.8253, -19.1956, -0.462326 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -28,8 +28,8 @@ region_rect = Rect2( 64, 0, 64, 320 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( -0.485777, -1.08532 )
-transform/scale = Vector2( 3.00736, 15.8253 )
+transform/pos = Vector2( -19.1956, -0.462326 )
+transform/scale = Vector2( 0.0176144, 15.8253 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
