@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 func sprite(i):
-	Ballcor = get_node("BallCor")
+	var BallCor = get_node("BallCor")
 	if(i == 0):
 		BallCor.set_region_rect(Rect2(128,192,128,128))
 		

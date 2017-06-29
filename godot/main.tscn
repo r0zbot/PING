@@ -30,13 +30,13 @@ transform/scale = Vector2( 0.487846, 0.487846 )
 
 [node name="BarraAzul" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 43.4247, 455.96 )
+transform/pos = Vector2( 47.7279, 300 )
 transform/scale = Vector2( 0.513943, 0.513943 )
 speed = 10
 
 [node name="BarraVermelha" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 976.535, 151.464 )
+transform/pos = Vector2( 975, 300 )
 transform/scale = Vector2( 0.513943, 0.513943 )
 speed = 10
 
