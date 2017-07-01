@@ -7,7 +7,7 @@ var rightcor = 0 #usado para ver se a bola foi lançada com a cor correta
 var parada = 0 #usado para parar a roleta
 var ball #a bola
 var roleta #a roleta
-
+var explosao #particulas
 
 func setball(): #coloca a bola no meio 
 	ball.set_global_pos(Vector2(512.5,300))
@@ -41,6 +41,9 @@ func throw(): #prepara a direçao da bola baseada na roleta
 			vetory = Vector2(0,-14)
 
 func ballcollisions(): #verifica as colisoes da bola
+	var boom = explosao.instance()
+	boom.setPart(ball.get_global_pos()+vetorx+vetory,ball.get_collision_normal(),vetorx.length()+vetory.length())
+	add_child(boom)
 	if(ball.get_collider() == get_node("BarraVermelha") or ball.get_collider() == get_node("BarraAzul")):
 			vetorx = -vetorx
 			
@@ -75,6 +78,7 @@ func blink(): #troca a cor da bola
 func _ready():
 	ball = get_node("Ball")
 	roleta = get_node("Roleta")
+	explosao = load("res://explosion.tscn")
 	randomize()
 	setball()
 	set_fixed_process(true)

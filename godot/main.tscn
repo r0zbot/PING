@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://barraAzul.tscn" type="PackedScene" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://SoundtrackRepeat.gd" type="Script" id=6]
 [ext_resource path="res://soundtrack_intro.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Roleta.tscn" type="PackedScene" id=8]
+
+[sub_resource type="ColorRamp" id=3]
+
+offsets = FloatArray( 0, 1 )
+colors = ColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -41,6 +46,31 @@ speed = 10
 transform/pos = Vector2( 512.5, 300 )
 transform/scale = Vector2( 0.487846, 0.487846 )
 z/z = -1
+
+[node name="Particles2D" type="Particles2D" parent="Ball"]
+
+z/z = -3
+config/amount = 60
+config/lifetime = 0.35
+config/process_mode = 1
+config/local_space = false
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 30.0
+params/final_size = 30.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color_ramp = SubResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
