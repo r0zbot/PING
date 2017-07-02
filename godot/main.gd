@@ -44,7 +44,7 @@ func throw(): #prepara a direçao da bola baseada na roleta
 func ballcollisions(): #verifica as colisoes da bola
 	var boom = explosao.instance()
 	boom.setPart(ball.get_global_pos()+vetorx+vetory,ball.get_collision_normal(),vetorx.length()+vetory.length())
-	add_child(boom)
+	
 	if(ball.get_collider() == get_node("BarraVermelha") or ball.get_collider() == get_node("BarraAzul")):
 			vetorx = -vetorx
 			
@@ -61,12 +61,19 @@ func ballcollisions(): #verifica as colisoes da bola
 			if(ball.get_collider() == get_node("BarraVermelha")):
 				cor = 1
 				trail.set_color_ramp(load("res://red.tres"))
+				boom.setColor(load("res://blue.tres"))
 			else:
 				cor = 0
 				trail.set_color_ramp(load("res://blue.tres"))
+				boom.setColor(load("res://red.tres"))
 			ball.sprite(cor)
 	else:
 		vetory = -vetory
+		if(cor==0):
+			boom.setColor(load("res://blue.tres"))
+		else:
+			boom.setColor(load("res://red.tres"))
+	add_child(boom)
 	ball.move(vetorx+vetory)
 
 

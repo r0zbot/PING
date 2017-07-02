@@ -21,6 +21,9 @@ func setPart(i,n,u):
 	self.set_param(0, xy)
 	self.set_param(2,u*15)
 
+func setColor(c):
+	self.set_color_ramp(c)
+
 func _on_Timer_timeout():
 	self.queue_free()
 	pass 
