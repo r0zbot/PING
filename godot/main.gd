@@ -6,6 +6,7 @@ var set = 0 #usado para determinar o tempo da bola parada
 var rightcor = 0 #usado para ver se a bola foi lançada com a cor correta
 var parada = 0 #usado para parar a roleta
 var ball #a bola
+var trail #o rastro da bola
 var roleta #a roleta
 var explosao #particulas
 
@@ -50,7 +51,7 @@ func ballcollisions(): #verifica as colisoes da bola
 			if(ball.get_collider_velocity() > Vector2(0,0)):
 				vetory = vetory+Vector2(0,randi()%5+3)
 			if(ball.get_collider_velocity() < Vector2(0,0)):
-				vetory = vetory+Vector2(0,-randi()%5+3)
+				vetory = vetory+Vector2(0,-(randi()%5+3))
 				
 			if(vetory > Vector2(0,20)):
 				vetory = Vector2(0,20)
@@ -59,8 +60,10 @@ func ballcollisions(): #verifica as colisoes da bola
 				
 			if(ball.get_collider() == get_node("BarraVermelha")):
 				cor = 1
+				trail.set_color_ramp(load("res://red.tres"))
 			else:
 				cor = 0
+				trail.set_color_ramp(load("res://blue.tres"))
 			ball.sprite(cor)
 	else:
 		vetory = -vetory
@@ -79,6 +82,7 @@ func _ready():
 	ball = get_node("Ball")
 	roleta = get_node("Roleta")
 	explosao = load("res://explosion.tscn")
+	trail = get_node("Ball/Particles2D")
 	randomize()
 	setball()
 	set_fixed_process(true)
@@ -97,8 +101,10 @@ func _fixed_process(delta):
 			roleta.parada()
 			if(vetorx < Vector2(0,0)):
 				ball.sprite(1)
+				trail.set_color_ramp(load("res://red.tres"))
 			else:
 				ball.sprite(0)
+				trail.set_color_ramp(load("res://blue.tres"))
 			rightcor = 1
 		ball.move(vetorx+vetory)
 		if(ball.test_move(vetorx+vetory)):

@@ -19,7 +19,7 @@ func setPart(i,n,u):
 		else:
 			xy = 270
 	self.set_param(0, xy)
-	self.set_param(2,u*10)
+	self.set_param(2,u*15)
 
 func _on_Timer_timeout():
 	self.queue_free()
