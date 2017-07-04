@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
 [ext_resource path="res://Get Lucky.ogg" type="AudioStream" id=2]
 [ext_resource path="res://title_spritesheet_with_bg.tex" type="Texture" id=3]
+[ext_resource path="res://Fonte.fnt" type="BitmapFont" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -74,5 +75,23 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "TitleAnimInicial"
+
+[node name="Label" type="Label" parent="."]
+
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 8.0
+margin/top = 360.0
+margin/right = 2009.0
+margin/bottom = 410.0
+custom_fonts/font = ExtResource( 4 )
+text = "Clique para Jogar"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

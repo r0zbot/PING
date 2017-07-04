@@ -123,9 +123,13 @@ func _fixed_process(delta):
 		if(ball.get_pos() > Vector2(1225,0)):
 			pontosA = pontosA + 1
 			score.pontos(pontosA, pontosV)
+			if(pontosA == 5):
+				get_tree().change_scene("res://AzulWin.tscn")
 			setball()
 		if(ball.get_global_pos() < Vector2(-200,0)):
 			pontosV = pontosV + 1
 			score.pontos(pontosA, pontosV)
+			if(pontosV == 5):
+				get_tree().change_scene("res://VermelhoWin.tscn")
 			setball()
 	pass
