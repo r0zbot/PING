@@ -6,20 +6,22 @@ var state = 0 #usado para determinar o estado do jogo (começando = 2+, jogando 
 var set = 0 #usado para determinar o tempo da bola parada
 var rightcor = 0 #usado para ver se a bola foi lançada com a cor correta
 var parada = 0 #usado para parar a roleta
+var pontosA = 0#putuação da barra Azul
+var pontosV = 0#putuação da barra Vermelha
 var ball #a bola
 var trail #o rastro da bola
 var roleta #a roleta
 var explosao #particulas
 var score #placar
-var pontosA = 0#putuação da barra Azul
-var pontosV = 0#putuação da barra Vermelha
+var player #animationplayer
 
 func setball(): #coloca a bola no meio 
 	ball.set_global_pos(Vector2(512.5,300))
 	set = 0
 	rightcor = 0
 	parada = 0
-	roleta.roleta()
+	if(state!=0):
+		roleta.roleta()
 
 func throw(): #prepara a direçao da bola baseada na roleta
 	var pos = roleta.getframe()
@@ -95,6 +97,7 @@ func _ready():
 	explosao = load("res://explosion.tscn")
 	trail = get_node("Ball/Particles2D")
 	score = get_node("ScoreBall")
+	player = get_node("Intro_End")
 	state = 6
 	randomize()
 	set_fixed_process(true)
@@ -132,11 +135,22 @@ func _fixed_process(delta):
 				pontosA = pontosA + 1
 				score.Blue(pontosA)
 				if(pontosA == 5):
-					get_tree().change_scene("res://AzulWin.tscn")
+					var label = get_node("Red_Label")
+					label.set_text("LOSE")
+					state = 0
+					player.play("End")
 				setball()
 			if(ball.get_global_pos() < Vector2(-200,0)):
 				pontosV = pontosV + 1
 				score.Red(pontosV)
 				if(pontosV == 5):
-					get_tree().change_scene("res://VermelhoWin.tscn")
+					var label = get_node("Blue_Label")
+					label.set_text("LOSE")
+					state = 0
+					player.play("End")
 				setball()
+	else:
+		state = state - delta
+		if(state < -7):
+			get_tree().change_scene("res://menu.tscn")
+		
