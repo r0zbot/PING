@@ -11,4 +11,4 @@ func _ready():
 	pass
 func _input(input):
 	if input.is_action_pressed("start"):
-		get_tree().change_scene("res://main.tscn")
+		get_tree().change_scene("res://menu.tscn")

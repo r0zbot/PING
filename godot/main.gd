@@ -2,6 +2,7 @@ extends YSort
 var cor = 1
 var vetorx = Vector2(-10,0)
 var vetory = Vector2(0,3)
+var state = 0 #usado para determinar o estado do jogo (começando = 2+, jogando = 1 ou vitoria = 0)
 var set = 0 #usado para determinar o tempo da bola parada
 var rightcor = 0 #usado para ver se a bola foi lançada com a cor correta
 var parada = 0 #usado para parar a roleta
@@ -93,43 +94,49 @@ func _ready():
 	roleta = get_node("Roleta")
 	explosao = load("res://explosion.tscn")
 	trail = get_node("Ball/Particles2D")
-	score = get_node("Score")
+	score = get_node("ScoreBall")
+	state = 6
 	randomize()
-	setball()
 	set_fixed_process(true)
 	pass
 
 
 func _fixed_process(delta):
-	if(set < 1.35):
-		set = set + 1*delta
-		blink();
-		if(set > 0.75 and parada == 0):
-			parada = 1
-			throw()
-	else:
-		if(rightcor == 0):
-			roleta.parada()
-			if(vetorx < Vector2(0,0)):
-				ball.sprite(1)
-				trail.set_color_ramp(load("res://red.tres"))
-			else:
-				ball.sprite(0)
-				trail.set_color_ramp(load("res://blue.tres"))
-			rightcor = 1
-		ball.move(vetorx+vetory)
-		if(ball.test_move(vetorx+vetory)):
-			ballcollisions()
-		if(ball.get_pos() > Vector2(1225,0)):
-			pontosA = pontosA + 1
-			score.pontos(pontosA, pontosV)
-			if(pontosA == 5):
-				get_tree().change_scene("res://AzulWin.tscn")
+	if(state > 1):
+		state = state - delta
+		blink()
+		if(state < 2):
+			state = 1
 			setball()
-		if(ball.get_global_pos() < Vector2(-200,0)):
-			pontosV = pontosV + 1
-			score.pontos(pontosA, pontosV)
-			if(pontosV == 5):
-				get_tree().change_scene("res://VermelhoWin.tscn")
-			setball()
-	pass
+	elif(state == 1):
+		if(set < 2.5):
+			set = set + delta
+			blink();
+			if(set > 1.5 and parada == 0):
+				parada = 1
+				throw()
+		else:
+			if(rightcor == 0):
+				roleta.parada()
+				if(vetorx < Vector2(0,0)):
+					ball.sprite(1)
+					trail.set_color_ramp(load("res://red.tres"))
+				else:
+					ball.sprite(0)
+					trail.set_color_ramp(load("res://blue.tres"))
+				rightcor = 1
+			ball.move(vetorx+vetory)
+			if(ball.test_move(vetorx+vetory)):
+				ballcollisions()
+			if(ball.get_pos() > Vector2(1225,0)):
+				pontosA = pontosA + 1
+				score.Blue(pontosA)
+				if(pontosA == 5):
+					get_tree().change_scene("res://AzulWin.tscn")
+				setball()
+			if(ball.get_global_pos() < Vector2(-200,0)):
+				pontosV = pontosV + 1
+				score.Red(pontosV)
+				if(pontosV == 5):
+					get_tree().change_scene("res://VermelhoWin.tscn")
+				setball()

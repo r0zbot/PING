@@ -3,5 +3,5 @@
 [resource]
 
 offsets = FloatArray( 0, 1 )
-colors = ColorArray( 0.972656, 0.577515, 0.577515, 1, 0, 0, 0, 1 )
+colors = ColorArray( 0.972656, 0.577515, 0.577515, 1, 0, 0, 0, 0 )
 
