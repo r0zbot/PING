@@ -9,6 +9,9 @@ var ball #a bola
 var trail #o rastro da bola
 var roleta #a roleta
 var explosao #particulas
+var score #placar
+var pontosA = 0#putuação da barra Azul
+var pontosV = 0#putuação da barra Vermelha
 
 func setball(): #coloca a bola no meio 
 	ball.set_global_pos(Vector2(512.5,300))
@@ -90,6 +93,7 @@ func _ready():
 	roleta = get_node("Roleta")
 	explosao = load("res://explosion.tscn")
 	trail = get_node("Ball/Particles2D")
+	score = get_node("Score")
 	randomize()
 	setball()
 	set_fixed_process(true)
@@ -116,6 +120,12 @@ func _fixed_process(delta):
 		ball.move(vetorx+vetory)
 		if(ball.test_move(vetorx+vetory)):
 			ballcollisions()
-		if(ball.get_pos() > Vector2(1225,0) or ball.get_global_pos() < Vector2(-200,0)):
+		if(ball.get_pos() > Vector2(1225,0)):
+			pontosA = pontosA + 1
+			score.pontos(pontosA, pontosV)
+			setball()
+		if(ball.get_global_pos() < Vector2(-200,0)):
+			pontosV = pontosV + 1
+			score.pontos(pontosA, pontosV)
 			setball()
 	pass
